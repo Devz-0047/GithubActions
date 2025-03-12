@@ -3,7 +3,7 @@ name: Deploy Project # Workflow name
 on: [push] # Trigger workflow on push
 
 jobs:
-  test-job:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +21,7 @@ jobs:
       - name: Run test
         run: npm test
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get code
