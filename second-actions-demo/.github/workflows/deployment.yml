@@ -1,6 +1,6 @@
 name: Deploy Project # Workflow name
 
-on: [push] # Trigger workflow on push
+on: [push, workflow_dispatch] # Trigger workflow on push
 
 jobs:
   test:
