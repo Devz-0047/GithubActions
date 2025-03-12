@@ -1,6 +1,8 @@
-name: Deploy Project # Workflow name
-
-on: [push, workflow_dispatch] # Trigger workflow on push
+name: Deploy Project
+on:
+  pull_request:
+    types: [opened, edited]
+  workflow_dispatch:
 
 jobs:
   test:
@@ -24,6 +26,9 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
+      - name: Output event data
+        run: echo "${{toJSON(github.event)}}"
+
       - name: Get code
         uses: actions/checkout@v4
 
